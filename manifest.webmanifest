@@ -1,0 +1,19 @@
+{
+  "name": "Meu Secretário — Enzo",
+  "short_name": "Meu Secretário",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#05070b",
+  "theme_color": "#07090d",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "secretary-icon.png",
+      "sizes": "1536x1536",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "description": "Meu Secretário — Enzo · finanças, agenda, metas e lembretes push"
+}

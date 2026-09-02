@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07090d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Meu Secretário — Enzo">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg">
+<title>Meu Secretário — Enzo</title>
+<style>
+:root{--bg:#05070b;--ink:#15171b;--white:#f2f3f5;--soft:#dfe1e5;--muted:#969ba4;--muted2:#70757e;--blue:#348ee8;--red:#d84c5c;--green:#41b47c;--line:#ffffff1d;--darkcard:#12151bd9;--shadow:0 18px 50px #0008}
+*{box-sizing:border-box}html{background:#05070b}body{margin:0;color:#f4f5f7;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:
+radial-gradient(circle at 50% -5%,#3b404d55,transparent 35%),radial-gradient(circle at 10% 45%,#18212d55,transparent 35%),
+linear-gradient(180deg,#07090d 0%,#05070b 55%,#020305 100%);min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(180deg,#ffffff06,transparent 25%,#0005 100%);z-index:-1}
+button,input,select{font:inherit}.app{max-width:760px;margin:auto;padding:18px 16px calc(110px + env(safe-area-inset-bottom))}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}.eyebrow{font-size:11px;letter-spacing:3px;font-weight:850;color:#c7cbd1}.hello{font-size:30px;font-weight:350;margin-top:5px;letter-spacing:-1px}.hello b{font-weight:650}.topBtns{display:flex;gap:8px}.iconbtn{width:48px;height:48px;border-radius:16px;border:1px solid #ffffff14;background:#101318e8;color:white;display:grid;place-items:center;cursor:pointer;font-size:20px}
+.accounts{display:grid;grid-template-columns:1fr 1fr;background:#0e1015e8;border:1px solid #ffffff17;border-radius:25px;padding:3px;margin-bottom:14px;box-shadow:var(--shadow)}.account{border:0;background:transparent;color:#898e97;text-align:left;padding:14px 16px;border-radius:22px;cursor:pointer}.account.active{background:linear-gradient(145deg,#252a33,#16191f);color:white;border:1px solid #777d8738;box-shadow:inset 0 1px #ffffff13}.flag{font-size:19px;margin-right:8px}.account strong{font-size:14px}.account small{display:block;margin-top:4px;color:#747983;font-size:11px}.account.active small{color:#a5aab2}
+.hero{border:1px solid #ffffff19;border-radius:27px;background:linear-gradient(145deg,#171a20ec,#0c0f14ea);padding:20px 19px 15px;box-shadow:var(--shadow);overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:230px;height:230px;border-radius:50%;right:-100px;top:-130px;background:#fff5;filter:blur(70px)}.system{display:flex;gap:15px;align-items:center}.orb{width:92px;height:92px;flex:none;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#f7f8fa 0 12%,#cbd0d8 13% 19%,#333944 20% 31%,#171b23 32% 48%,#858b96 49% 52%,#1a1e27 53% 100%);box-shadow:0 0 25px #dce3ee55,0 0 65px #8c96a733;cursor:pointer}.orb span{font-size:27px;color:#20242b}.status{font-size:12px;letter-spacing:2.5px;font-weight:850}.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#e7eaee;box-shadow:0 0 9px #fff;margin-right:8px}.system h2{font-size:20px;font-weight:400;margin:8px 0 5px}.system p{margin:0;color:#a1a6ae;font-size:13px;line-height:1.45}.heroFoot{border-top:1px solid #ffffff18;margin-top:17px;padding-top:12px;display:flex;justify-content:space-between;color:#9297a0}.heroFoot strong{font-size:23px;color:#fff}.heroFoot small{font-size:11px}
+.cards{display:grid;gap:10px;margin-top:11px}.wide{border-radius:24px;background:linear-gradient(145deg,#1a1d23e8,#11141ae8);border:1px solid #ffffff18;padding:17px 18px;box-shadow:var(--shadow)}.label{font-size:11px;letter-spacing:2px;font-weight:850;color:#a2a6ae}.destination{font-size:18px;margin:8px 0 2px;font-weight:700}.sub{color:#999ea6;font-size:12px}.bigMoney{font-size:34px;font-weight:350;letter-spacing:-1.3px;margin-top:7px}.blue{color:var(--blue)}.red{color:var(--red)}.green{color:var(--green)}.split{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:linear-gradient(145deg,#e9eaec,#dfe1e4);color:#17191d;border-radius:23px;padding:16px}.stat .label{color:#7f848c;letter-spacing:0}.stat .money{font-size:20px;font-weight:800;margin-top:7px}.stat .hint{font-size:11px;color:#7f848c;margin-top:4px}
+.actionCard{margin-top:11px;background:#090b0f;border:1px solid #ffffff1a;border-radius:25px;padding:16px}.actionTitle{font-size:18px;font-weight:800}.actionSub{font-size:12px;color:#a0a4aa;margin:5px 0 12px}.quick{display:flex;gap:7px;flex-wrap:wrap}.chip{border:1px solid #ffffff27;background:#11141a;color:#d9dce1;padding:9px 12px;border-radius:20px;cursor:pointer}.inputRow{display:flex;gap:7px;background:#f4f4f5;border-radius:18px;padding:5px}.inputRow input{border:0;background:transparent;min-width:0;flex:1;color:#222;padding:11px;outline:0;font-size:14px}.send{width:44px;border:0;border-radius:14px;background:#20242c;color:white;cursor:pointer}
+.monthCard{margin-top:11px;border-radius:24px;background:linear-gradient(145deg,#f0f1f3,#dfe1e4);color:#191b1f;padding:19px}.monthCard .money{font-size:34px;font-weight:350;margin:7px 0;color:#111}.monthCard .hint{color:#438bd3;font-size:13px}.tabs{display:grid;grid-template-columns:repeat(4,1fr);background:#e2e3e6;border-radius:21px;padding:3px;margin-top:11px;color:#777b82}.tabs button{border:0;background:transparent;padding:12px 4px;border-radius:18px;color:inherit;cursor:pointer;font-size:12px}.tabs button.active{background:#f1f2f4;color:#181a1e;box-shadow:0 2px 8px #0002}
+.sectionTitle{margin:25px 2px 10px}.sectionTitle .eyebrow{color:#c5c9cf}.sectionTitle h2{font-size:23px;font-weight:350;margin:4px 0}.addBtn{float:right;margin-top:-43px;background:#11141a;color:white;border:1px solid #ffffff1c;border-radius:15px;padding:10px 13px;cursor:pointer}.record{background:linear-gradient(145deg,#eceef0,#dfe1e4);color:#17191d;border-radius:20px;padding:12px 13px;margin:7px 0;display:flex;align-items:center;gap:11px}.recordIcon{width:43px;height:43px;border-radius:14px;background:#f8f9fa;display:grid;place-items:center;color:#4b91dc;font-weight:800}.recordMain{flex:1;min-width:0}.recordMain strong{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.recordMain small{display:block;color:#858990;font-size:11px;margin-top:4px}.recordAmount{font-size:14px;font-weight:850;white-space:nowrap}.trash{border:0;background:transparent;color:#8e9794;font-size:18px;cursor:pointer}
+.billTotal{background:linear-gradient(145deg,#f1e6e8,#eadfe1);border:1px solid #d85a694d;color:#a63d4b;border-radius:23px;padding:17px;margin-bottom:10px}.billTotal .money{font-size:29px;font-weight:800;margin:4px 0}.bill{background:linear-gradient(145deg,#eef0f2,#e1e3e6);color:#191b1f;border-radius:19px;padding:10px 12px;display:flex;align-items:center;gap:10px;margin:7px 0}.datebox{width:48px;text-align:center;border-radius:12px;background:#f7f8f9;border:1px solid #c8cbd0;padding:5px}.datebox b{display:block;font-size:17px}.datebox small{font-size:9px}.billMain{flex:1}.billMain strong{font-size:14px}.billMain small{display:block;color:#8b8f96;margin-top:4px}.checkBill{width:25px;height:25px;border:2px solid #969ca4;border-radius:8px;background:transparent;cursor:pointer}.checkBill.paid{background:#4ab17d;border-color:#4ab17d;position:relative}.checkBill.paid:after{content:"✓";color:white;position:absolute;left:5px;top:1px}.emptyBox{border-radius:23px;background:linear-gradient(145deg,#e7e8ea,#dfe1e4);color:#222;padding:36px 20px;text-align:center}.emptyBox .emoji{font-size:30px}.emptyBox h3{margin:10px 0 4px}.emptyBox p{color:#858a91;font-size:13px}
+.modal{position:fixed;inset:0;background:#000b;z-index:100;display:none;align-items:flex-end;justify-content:center}.modal.show{display:flex}.sheet{width:min(760px,100%);background:#12151a;border:1px solid #ffffff1b;border-radius:28px 28px 0 0;padding:19px 16px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -20px 60px #000a}.sheet h2{margin:0 0 13px;font-size:21px}.form{display:grid;grid-template-columns:1fr 1fr;gap:8px}.form .full{grid-column:1/-1}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:10px;color:#969ba4}.field input,.field select{width:100%;background:#080b10;border:1px solid #222c38;color:#fff;border-radius:12px;padding:11px;outline:0}.sheetActions{display:flex;gap:8px;margin-top:12px}.sheetActions .btn{flex:1}.btn{border:1px solid #25303c;background:#0b1017;color:white;border-radius:13px;padding:11px;cursor:pointer}.btn.primary{background:#e8eaed;color:#15171b;border-color:#fff}.btn.danger{color:#ff8e9b}
+.lock{position:fixed;inset:0;z-index:300;background:radial-gradient(circle at 50% 40%,#171b23,#05070b 60%);display:flex;align-items:center;justify-content:center;padding:18px}.lockCard{width:min(590px,100%);border:1px solid #ffffff19;border-radius:29px;background:#101319e8;padding:35px 25px;text-align:center;box-shadow:0 30px 80px #000b}.lockIcon{width:82px;height:82px;margin:auto;border-radius:25px;background:linear-gradient(145deg,#454b56,#1c2028);display:grid;place-items:center;font-size:33px}.lockCard .eyebrow{margin-top:23px}.lockCard h1{font-size:30px;font-weight:350;margin:9px 0}.lockCard p{color:#a0a5ad;line-height:1.5}.pinInput{width:100%;background:#0b0e13;border:1px solid #ffffff1b;color:white;border-radius:15px;padding:14px;text-align:center;font-size:22px;letter-spacing:8px;outline:0}.lockError{height:18px;color:#ff7281;font-size:12px;margin-top:5px}.toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%);z-index:400;background:#171c24;border:1px solid #ffffff24;color:white;padding:11px 15px;border-radius:13px;display:none;max-width:90%;text-align:center}.toast.show{display:block}
+@media(max-width:520px){.app{padding-left:12px;padding-right:12px}.hello{font-size:27px}.system{align-items:flex-start}.orb{width:78px;height:78px}.bigMoney{font-size:30px}.form{grid-template-columns:1fr}.form .full{grid-column:1}.account{padding:13px 10px}.account small{font-size:10px}}
+
+.reminderBox{margin-top:10px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:rgba(10,11,14,.76);padding:14px;backdrop-filter:blur(18px)}
+.reminderTop{display:flex;align-items:center;justify-content:space-between;gap:10px}.reminderTitle{font-size:13px;font-weight:800}.reminderState{font-size:10px;color:#aaaeb3}
+.reminderItem{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid rgba(255,255,255,.07)}.reminderItem:first-child{border-top:0}
+.reminderBell{width:36px;height:36px;border-radius:12px;background:#202227;display:grid;place-items:center}.reminderText{flex:1;min-width:0}.reminderText strong{display:block;font-size:12px}.reminderText small{display:block;color:#888c92;font-size:10px;margin-top:2px}
+</style>
+</head>
+<body>
+<div id="lock" class="lock">
+<div class="lockCard"><div class="lockIcon">♙</div><div class="eyebrow">PROTEÇÃO DO APLICATIVO</div><h1 id="lockTitle">Meu Secretário bloqueado</h1><p id="lockDesc">Use o PIN para acessar suas informações.</p><button id="passkeyUse" class="btn primary" style="width:100%;display:none;margin-bottom:9px">◉ Abrir com biometria / passkey</button><input id="pin" class="pinInput" inputmode="numeric" maxlength="6" type="password" placeholder="••••"><div id="lockError" class="lockError"></div><button id="unlock" class="btn" style="width:100%">Entrar com PIN</button><p class="small">Os dados desta versão ficam no armazenamento privado desta aplicação.</p></div>
+</div>
+
+<main class="app">
+<header class="top"><div><div class="eyebrow">MEU SECRETÁRIO</div><div class="hello">Olá, <b id="name">Enzo</b></div></div><div class="topBtns"><button class="iconbtn" id="lockNow" title="Bloquear">♙</button><button class="iconbtn" id="settingsBtn" title="Definições">⚙</button></div></header>
+<div class="accounts" id="accounts"></div>
+
+<section id="home">
+<div class="hero">
+<div class="system"><div class="orb" id="orb" title="Falar"><span>♩</span></div><div><div class="status"><i></i>SISTEMA ONLINE</div><h2 id="greeting">Boa tarde, Enzo.</h2><p>Seu painel está atualizado. Toque no núcleo para falar comigo.</p></div></div>
+<div class="heroFoot"><strong id="clock">15:51</strong><small id="date">QUA., 02 DE SET.</small></div>
+</div>
+<div class="cards">
+<div class="wide" id="destinationCard"><div class="label" id="destLabel">PRÓXIMO</div><div class="destination" id="destText">Agenda livre</div><div class="sub" id="destSub">Nenhum compromisso pendente</div></div>
+<div class="wide"><div class="label">SALDO DA CONTA <span id="heroCurrency">EUR</span></div><div class="bigMoney" id="balance">€ 0,00</div><div class="sub" id="balanceHint">Saldo registrado neste mês</div></div>
+<div class="split"><div class="stat"><div class="label">↘ ENTRADAS · <span id="statCur1">EUR</span></div><div class="money blue" id="income">€ 0,00</div><div class="hint">neste mês</div></div><div class="stat"><div class="label">↗ SAÍDAS · <span id="statCur2">EUR</span></div><div class="money red" id="expense">€ 0,00</div><div class="hint">neste mês</div></div></div>
+</div>
+<div class="actionCard"><div class="actionTitle">✧ O que você quer registrar?</div><div class="actionSub">Registrando agora na conta <b id="activeAccountName">Portugal</b>.</div><div class="inputRow"><span style="display:grid;place-items:center;width:35px;color:#6e827e">♩</span><input id="quickInput" placeholder="Ex: gastei €38 no mercado"><button class="send" id="quickSend">➤</button></div><div class="quick"><button class="chip" data-action="expense">Registrar gasto</button><button class="chip" data-action="commit">Criar lembrete</button><button class="chip" data-action="goal">Nova meta</button></div>
+<div class="reminderBox">
+  <div class="reminderTop"><div class="reminderTitle">◉ Lembretes push</div><div class="reminderState" id="pushState">Verificando…</div></div>
+  <div class="sub" style="margin:5px 0 9px">Contas podem avisar automaticamente 1 dia antes do vencimento.</div>
+  <button class="btn" id="pushEnable" type="button" onclick="enablePush()">Ativar notificações</button>
+  <div id="reminderList"></div>
+</div>
+</div>
+<div class="monthCard"><div class="sub">Saldo da conta <span id="monthAccount">Portugal</span> neste mês</div><div class="money" id="monthBalance">€ 0,00</div><div class="hint" id="monthHint">↗ Seu saldo registrado neste mês.</div></div>
+<div class="tabs" id="tabs"><button class="active" data-page="finance">Finanças</button><button data-page="bills">Contas</button><button data-page="agenda">Agenda</button><button data-page="goals">Metas</button></div>
+</section>
+
+<section id="content"></section>
+</main>
+
+<div id="modal" class="modal"><div class="sheet"><h2 id="modalTitle"></h2><div id="modalBody"></div><div class="sheetActions"><button class="btn" id="modalCancel">Cancelar</button><button class="btn primary" id="modalSave">Salvar</button></div></div></div>
+<div id="toast" class="toast"></div>
+
+<script>
+const KEY='meu_secretario_enzo_v3';
+const seed={version:3,name:'Enzo',pinHash:null,active:'pt',accounts:{pt:{name:'Portugal',flag:'🇵🇹',currency:'EUR',symbol:'€',mov:[],bills:[],commit:[],goals:[]},br:{name:'Brasil',flag:'🇧🇷',currency:'BRL',symbol:'R$',mov:[],bills:[],commit:[],goals:[]}},passkey:null};
+let state=JSON.parse(localStorage.getItem(KEY)||'null')||seed;
+if(!state.accounts?.pt||!state.accounts?.br){state=seed;save()}
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
+const active=()=>state.accounts[state.active];
+const today=()=>new Date().toISOString().slice(0,10);
+const fmt=(n,c)=>new Intl.NumberFormat(c==='BRL'?'pt-BR':'pt-PT',{style:'currency',currency:c}).format(Number(n)||0);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+const id=()=>crypto.randomUUID();
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove('show'),2300)};
+async function hash(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+function accountTabs(){const a=state.accounts;$('#accounts').innerHTML=['pt','br'].map(k=>`<button class="account ${state.active===k?'active':''}" onclick="switchAccount('${k}')"><span class="flag">${a[k].flag}</span><strong>${esc(a[k].name)}</strong><small>Conta em ${a[k].currency==='EUR'?'euro · EUR':'real · BRL'}</small></button>`).join('')}
+window.switchAccount=k=>{state.active=k;save();accountTabs();render();toast('Conta '+active().name+' selecionada')};
+
+function nowText(){const d=new Date();$('#clock').textContent=d.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'});$('#date').textContent=d.toLocaleDateString('pt-PT',{weekday:'short',day:'2-digit',month:'short'}).toUpperCase().replace('.','') }
+setInterval(nowText,1000);nowText();
+function render(){
+ accountTabs();$('#name').textContent=state.name||'Enzo';const a=active(),c=a.currency;
+ $('#greeting').textContent=(new Date().getHours()<12?'Bom dia, ':'Boa tarde, ')+(state.name||'Enzo')+'.';
+ $('#heroCurrency').textContent=c;$('#statCur1').textContent=c;$('#statCur2').textContent=c;$('#activeAccountName').textContent=a.name;$('#monthAccount').textContent=a.name;
+ const month=today().slice(0,7), mm=a.mov.filter(m=>m.date.startsWith(month));
+ const bal=a.mov.reduce((s,m)=>s+(m.type==='income'?1:-1)*+m.amount,0);
+ const mi=mm.filter(m=>m.type==='income').reduce((s,m)=>s+ +m.amount,0),me=mm.filter(m=>m.type==='expense').reduce((s,m)=>s+ +m.amount,0);
+ $('#balance').textContent=fmt(bal,c);$('#monthBalance').textContent=fmt(mi-me,c);$('#income').textContent=fmt(mi,c);$('#expense').textContent=fmt(me,c);
+ const next=a.commit.filter(x=>x.date>=today()).sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time))[0];
+ $('#destText').textContent=next?next.title:'Agenda livre';$('#destSub').textContent=next?`${next.date}${next.time?' · '+next.time:''}`:'Nenhum compromisso pendente';
+ renderContent(window.page||'finance');
+}
+function renderContent(page){
+ window.page=page;$$('#tabs button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
+ const a=active(),c=a.currency;
+ if(page==='finance'){
+  const mov=a.mov.slice().sort((x,y)=>y.date.localeCompare(x.date)).slice(0,12);
+  $('#content').innerHTML=`<div class="sectionTitle"><div class="eyebrow">MOVIMENTAÇÕES · ${c}</div><h2>Últimos registros</h2><button class="addBtn" onclick="openModal('mov')">＋ Adicionar</button></div>${mov.map(m=>movRow(m)).join('')||empty('↘','Nenhuma movimentação','Adicione seu primeiro ganho ou gasto.')}`;
+ }else if(page==='bills'){
+  const pending=a.bills.filter(b=>!b.paid).reduce((s,b)=>s+ +b.amount,0), count=a.bills.filter(b=>!b.paid).length;
+  const bills=a.bills.slice().sort((x,y)=>x.date.localeCompare(y.date));
+  $('#content').innerHTML=`<div class="sectionTitle"><div class="eyebrow">DÉBITOS FUTUROS · ${c}</div><h2>Contas a pagar</h2><button class="addBtn" onclick="openModal('bill')">＋ Adicionar conta</button></div><div class="billTotal"><div class="label" style="color:#a04450">TOTAL DE DÉBITOS PENDENTES</div><div class="money">${fmt(pending,c)}</div><div class="sub">${count} ${count===1?'conta pendente':'contas pendentes'} · ${c}</div></div>${bills.map(b=>billRow(b)).join('')||empty('◫','Nenhuma conta programada','Adicione aqui os próximos débitos sem misturar com as movimentações.')}`;
+ }else if(page==='agenda'){
+  const cs=a.commit.slice().sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time));
+  $('#content').innerHTML=`<div class="sectionTitle"><div class="eyebrow">AGENDA</div><h2>Compromissos</h2><button class="addBtn" onclick="openModal('commit')">＋ Adicionar</button></div>${cs.map(commitRow).join('')||empty('◷','Agenda livre','Nenhum compromisso pendente.')}`;
+ }else{
+  $('#content').innerHTML=`<div class="sectionTitle"><div class="eyebrow">METAS</div><h2>Objetivos</h2><button class="addBtn" onclick="openModal('goal')">＋ Nova meta</button></div>${a.goals.map(goalRow).join('')||empty('✧','Nenhuma meta','Crie uma meta para acompanhar seu progresso.')}`;
+ }
+}
+function movRow(m){return `<div class="record"><div class="recordIcon">${m.type==='income'?'↘':'↗'}</div><div class="recordMain"><strong>${esc(m.desc)}</strong><small>${esc(m.category||'Movimentação')} · ${new Date(m.date+'T12:00:00').toLocaleDateString('pt-PT',{day:'2-digit',month:'short'})}</small></div><div class="recordAmount ${m.type==='income'?'blue':'red'}">${m.type==='income'?'+':'−'}${fmt(m.amount,active().currency)}</div><button class="trash" onclick="delMov('${m.id}')">♙</button></div>`}
+function billRow(b){return `<div class="bill"><button class="checkBill ${b.paid?'paid':''}" onclick="toggleBill('${b.id}')" aria-label="Marcar como paga"></button><div class="datebox"><b>${new Date(b.date+'T12:00:00').getDate().toString().padStart(2,'0')}</b><small>${new Date(b.date+'T12:00:00').toLocaleDateString('pt-PT',{month:'short'}).toUpperCase()}</small></div><div class="billMain"><strong>${esc(b.name)}</strong><small>${b.repeat?'Débito mensal':'Débito futuro'}${b.paid?' · pago':''}${b.remind?' · 🔔 1 dia antes':''}</small></div><div class="recordAmount ${b.paid?'green':'red'}">${fmt(b.amount,active().currency)}</div><button class="trash" onclick="delBill('${b.id}')">♙</button></div>`}
+function commitRow(c){return `<div class="record"><div class="recordIcon">◷</div><div class="recordMain"><strong>${esc(c.title)}</strong><small>${c.date}${c.time?' · '+c.time:''}${c.note?' · '+esc(c.note):''}</small></div><button class="trash" onclick="delCommit('${c.id}')">♙</button></div>`}
+function goalRow(g){const p=g.target?Math.min(100,100*g.saved/g.target):0;return `<div class="wide" style="color:white;margin:7px 0"><div style="display:flex;justify-content:space-between"><strong>${esc(g.title)}</strong><span class="blue">${p.toFixed(0)}%</span></div><div class="sub" style="margin-top:5px">${fmt(g.saved,active().currency)} de ${fmt(g.target,active().currency)}${g.deadline?' · até '+g.deadline:''}</div><div style="height:7px;background:#222831;border-radius:9px;margin-top:11px;overflow:hidden"><i style="display:block;height:100%;width:${p}%;background:var(--blue)"></i></div><button class="btn danger" style="margin-top:10px" onclick="delGoal('${g.id}')">Excluir</button></div>`}
+function empty(i,h,p){return `<div class="emptyBox"><div class="emoji">${i}</div><h3>${h}</h3><p>${p}</p></div>`}
+
+$$('#tabs button').forEach(b=>b.onclick=()=>renderContent(b.dataset.page));
+$$('.chip').forEach(b=>b.onclick=()=>openModal(b.dataset.action==='expense'?'mov':b.dataset.action));
+$('#quickSend').onclick=()=>handleQuick($('#quickInput').value);$('#quickInput').onkeydown=e=>{if(e.key==='Enter')handleQuick(e.target.value)};
+function handleQuick(t){t=t.trim();if(!t)return;const n=t.match(/(\d+(?:[.,]\d{1,2})?)/);if(!n){toast('Diga o valor também. Ex.: “gastei 38 no mercado”');return}const amount=parseFloat(n[1].replace(',','.'));const income=/recebi|ganhei|entrada|salário|salario|renda/.test(t.toLowerCase());let desc=t.replace(n[0],'').replace(/[€$R]/g,'').replace(/^(gastei|gasto|recebi|ganhei|paguei|entrada|salário|salario)\s*/i,'').trim()|| (income?'Ganho':'Gasto');active().mov.push({id:id(),desc,amount,type:income?'income':'expense',date:today(),category:'Rápido'});save();$('#quickInput').value='';render();toast('Movimentação registrada')}
+
+function openModal(type){
+ const titles={mov:'Nova movimentação',bill:'Nova conta futura',commit:'Novo compromisso',goal:'Nova meta'};
+ $('#modalTitle').textContent=titles[type];let c=active().currency;
+ const commonDate=`<div class="field"><label>DATA</label><input name="date" type="date" value="${today()}" required></div>`;
+ if(type==='mov')$('#modalBody').innerHTML=`<div class="form"><div class="field full"><label>DESCRIÇÃO</label><input name="desc" placeholder="Ex.: Salário, supermercado…" required></div><div class="field"><label>VALOR (${c})</label><input name="amount" type="number" min="0" step="0.01" required></div><div class="field"><label>TIPO</label><select name="type"><option value="income">Ganho / entrada</option><option value="expense">Gasto / saída</option></select></div>${commonDate}<div class="field"><label>CATEGORIA</label><input name="category" placeholder="Ex.: Renda, comida…"></div></div>`;
+ if(type==='bill')$('#modalBody').innerHTML=`<div class="form"><div class="field full"><label>NOME DA CONTA</label><input name="name" placeholder="Ex.: Internet" required></div><div class="field"><label>VALOR (${c})</label><input name="amount" type="number" min="0" step="0.01" required></div>${commonDate}<label class="check full"><input name="repeat" type="checkbox"> Repetição mensal</label><label class="check full"><input name="remind" type="checkbox" checked> Lembrar 1 dia antes</label></div>`;
+ if(type==='commit')$('#modalBody').innerHTML=`<div class="form"><div class="field full"><label>TÍTULO</label><input name="title" placeholder="Ex.: Consulta, reunião…" required></div>${commonDate}<div class="field"><label>HORA</label><input name="time" type="time"></div><div class="field full"><label>NOTA</label><input name="note" placeholder="Opcional"></div></div>`;
+ if(type==='goal')$('#modalBody').innerHTML=`<div class="form"><div class="field full"><label>META</label><input name="title" placeholder="Ex.: Viagem, computador…" required></div><div class="field"><label>OBJETIVO (${c})</label><input name="target" type="number" min="0" step="0.01" required></div><div class="field"><label>JÁ GUARDADO</label><input name="saved" type="number" min="0" step="0.01" value="0"></div><div class="field full"><label>PRAZO</label><input name="deadline" type="date"></div></div>`;
+ $('#modal').classList.add('show');$('#modal').dataset.type=type;
+}
+$('#modalCancel').onclick=()=>$('#modal').classList.remove('show');$('#modal').onclick=e=>{if(e.target.id==='modal')$('#modal').classList.remove('show')};
+$('#modalSave').onclick=()=>{const type=$('#modal').dataset.type,f=new FormData($('#modalBody')),a=active();if(type==='mov')a.mov.push({id:id(),desc:f.get('desc'),amount:+f.get('amount'),type:f.get('type'),date:f.get('date'),category:f.get('category')});if(type==='bill')a.bills.push({id:id(),name:f.get('name'),amount:+f.get('amount'),date:f.get('date'),repeat:f.get('repeat')==='on',remind:f.get('remind')==='on',paid:false,generated:false});if(type==='commit')a.commit.push({id:id(),title:f.get('title'),date:f.get('date'),time:f.get('time'),note:f.get('note')});if(type==='goal')a.goals.push({id:id(),title:f.get('title'),target:+f.get('target'),saved:+f.get('saved'),deadline:f.get('deadline')});save();$('#modal').classList.remove('show');render();toast('Guardado com sucesso')};
+window.delMov=i=>{active().mov=active().mov.filter(x=>x.id!==i);save();render()};window.delBill=i=>{active().bills=active().bills.filter(x=>x.id!==i);save();render()};window.delCommit=i=>{active().commit=active().commit.filter(x=>x.id!==i);save();render()};window.delGoal=i=>{active().goals=active().goals.filter(x=>x.id!==i);save();render()};window.toggleBill=i=>{let b=active().bills.find(x=>x.id===i);if(b){b.paid=!b.paid;save();render();toast(b.paid?'Conta marcada como paga':'Conta reaberta')}};
+
+function recurring(){
+ for(const a of Object.values(state.accounts)){
+  const existing=new Set(a.bills.map(b=>b.date+'|'+b.name));
+  for(const b of [...a.bills]){
+   if(!b.repeat||b.generated)continue;
+   let d=new Date(b.date+'T12:00:00');
+   for(let k=0;k<24;k++){d.setMonth(d.getMonth()+1);let ds=d.toISOString().slice(0,10);if(ds<=today()&&!existing.has(ds+'|'+b.name)){a.bills.push({id:id(),name:b.name,amount:b.amount,date:ds,repeat:true,paid:false,generated:true});existing.add(ds+'|'+b.name)}}}
+ }
+ save();
+}
+recurring();
+
+$('#orb').onclick=()=>{
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){toast('Reconhecimento de voz não disponível neste navegador.');return}
+ const r=new SR();r.lang='pt-BR';r.interimResults=false;r.onstart=()=>toast('Estou ouvindo…');r.onresult=e=>handleQuick(e.results[0][0].transcript);r.onerror=()=>toast('Não consegui entender.');r.start()
+};
+
+$('#settingsBtn').onclick=()=>{
+ $('#modalTitle').textContent='Definições';$('#modalBody').innerHTML=`<div class="form"><div class="field full"><label>NOME</label><input id="setName" value="${esc(state.name)}"></div><div class="field full"><label>SEGURANÇA</label><button class="btn" type="button" onclick="configurePasskey()">Ativar biometria / passkey</button></div><div class="field full"><label>BACKUP</label><div style="display:flex;gap:7px"><button class="btn" type="button" onclick="exportData()">Exportar</button><button class="btn" type="button" onclick="$('#importFile').click()">Importar</button><input id="importFile" type="file" accept="application/json" hidden></div></div><div class="field full"><button class="btn danger" type="button" onclick="wipeAll()">Apagar todos os dados</button></div></div>`;$('#modal').classList.add('show');$('#modal').dataset.type='settings';
+};
+$('#modalSave').addEventListener('click',()=>{if($('#modal').dataset.type==='settings'){state.name=$('#setName')?.value||'Enzo';save();$('#modal').classList.remove('show');render()}});
+async function configurePasskey(){
+ if(!window.PublicKeyCredential||!window.isSecureContext){toast('Biometria exige HTTPS e suporte WebAuthn.');return}
+ try{const challenge=crypto.getRandomValues(new Uint8Array(32)),uid=crypto.getRandomValues(new Uint8Array(16));const cred=await navigator.credentials.create({publicKey:{challenge,rp:{name:'Meu Secretário — Enzo'},user:{id:uid,name:'enzo',displayName:state.name||'Enzo'},pubKeyCredParams:[{type:'public-key',alg:-7},{type:'public-key',alg:-257}],authenticatorSelection:{authenticatorAttachment:'platform',residentKey:'required',userVerification:'required'}}});state.passkey={id:btoa(String.fromCharCode(...new Uint8Array(cred.rawId)))};save();$('#passkeyUse').style.display='block';toast('Biometria/passkey ativada')}catch(e){toast('Não foi possível ativar a biometria')}}
+async function usePasskey(){
+ if(!state.passkey)return;try{const raw=Uint8Array.from(atob(state.passkey.id),c=>c.charCodeAt(0));await navigator.credentials.get({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),allowCredentials:[{type:'public-key',id:raw}],userVerification:'required'}});$('#lock').style.display='none';render()}catch(e){toast('Biometria não validada')}}
+$('#passkeyUse').onclick=usePasskey;
+async function setupPin(){
+ const p=$('#pin').value.trim();if(!/^\d{4,6}$/.test(p)){$('#lockError').textContent='Use 4 a 6 dígitos.';return}
+ if(!state.pinHash){state.pinHash=await hash(p);save();$('#lock').style.display='none';render();toast('PIN configurado')}else if(await hash(p)===state.pinHash){$('#lock').style.display='none';render()}else $('#lockError').textContent='PIN incorreto.';
+}
+$('#unlock').onclick=setupPin;$('#pin').onkeydown=e=>{if(e.key==='Enter')setupPin()};
+$('#lockNow').onclick=()=>{$('#lock').style.display='flex';$('#pin').value='';$('#lockError').textContent=''};
+if(state.pinHash)$('#lockDesc').textContent='Use o PIN ou biometria para acessar suas informações.';
+if(state.passkey)$('#passkeyUse').style.display='block';
+function exportData(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));a.download='meu-secretario-enzo-backup.json';a.click();toast('Backup exportado')}
+$('#modalBody').addEventListener?.('change',()=>{});
+document.addEventListener('change',e=>{if(e.target.id==='importFile'){const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!x.accounts||!x.accounts.pt||!x.accounts.br)throw 0;state=x;save();location.reload()}catch{toast('Backup inválido')}};r.readAsText(e.target.files[0])}});
+function wipeAll(){if(confirm('Apagar todos os dados?')){localStorage.removeItem(KEY);location.reload()}}
+
+async function enablePush(){
+  if(!('Notification' in window)){toast('Este navegador não suporta notificações.');return}
+  try{
+    const p=await Notification.requestPermission();
+    if(p==='granted'){state.pushEnabled=true;save();toast('Notificações ativadas');checkReminders(true)}
+    else toast('Permissão de notificações não concedida.');
+    updatePushUI();
+  }catch(e){toast('Não foi possível ativar as notificações.')}
+}
+function notificationSupported(){return 'Notification' in window && 'serviceWorker' in navigator}
+function localDateKey(){return new Date().toISOString().slice(0,10)}
+function dayBefore(ds){const d=new Date(ds+'T12:00:00');d.setDate(d.getDate()-1);return d.toISOString().slice(0,10)}
+function showReminder(title,body,tag){
+  if(!state.pushEnabled||!notificationSupported()||Notification.permission!=='granted')return;
+  navigator.serviceWorker.ready.then(reg=>reg.showNotification(title,{body,tag,icon:'secretary-icon.png',badge:'secretary-icon.png',data:{url:'./'}})).catch(()=>new Notification(title,{body,tag}));
+}
+function checkReminders(force=false){
+  const now=localDateKey(), a=active();
+  a.bills.filter(b=>b.remind&&!b.paid&&b.date>=now&&dayBefore(b.date)===now).forEach(b=>{
+    const key='reminder:'+b.id+':'+now;
+    if(!localStorage.getItem(key)||force){showReminder('Conta vence amanhã',`${b.name} · ${fmt(b.amount,a.currency)} vence em ${b.date}.`,'bill-'+b.id);localStorage.setItem(key,'1')}
+  });
+  renderReminderList();
+}
+function renderReminderList(){
+  const a=active(), now=localDateKey();
+  const list=a.bills.filter(b=>b.remind&&!b.paid&&b.date>=now).sort((x,y)=>x.date.localeCompare(y.date)).slice(0,4);
+  const el=$('#reminderList'); if(!el)return;
+  el.innerHTML=list.length?list.map(b=>`<div class="reminderItem"><div class="reminderBell">◷</div><div class="reminderText"><strong>${esc(b.name)}</strong><small>${fmt(b.amount,a.currency)} · ${b.date} · aviso 1 dia antes</small></div></div>`).join(''):'<div class="sub" style="padding-top:8px">Nenhum lembrete de conta programado.</div>';
+}
+function updatePushUI(){
+  const el=$('#pushState'),btn=$('#pushEnable');if(!el)return;
+  if(!notificationSupported()){el.textContent='Não suportado';btn.style.display='none';return}
+  if(Notification.permission==='granted'&&state.pushEnabled){el.textContent='ATIVO';btn.textContent='Notificações ativas';}
+  else if(Notification.permission==='denied'){el.textContent='Bloqueado';btn.textContent='Permissão bloqueada no navegador';}
+  else {el.textContent='INATIVO';btn.textContent='Ativar notificações';}
+  renderReminderList();
+}
+if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').then(()=>{updatePushUI();checkReminders()}).catch(()=>updatePushUI());
+setInterval(()=>checkReminders(),60*1000);
+render();
+
+</script>
+</body>
+</html>
